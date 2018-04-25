@@ -8,13 +8,14 @@ import javax.persistence.*;
 /**
  * Created by Adwiti on 4/24/2018.
  */
-@Entity
+
 @Getter
 @Setter
+@Entity
 @Table(name = "studenttab")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "sname")
     private String name;
@@ -22,4 +23,10 @@ public class Student {
     private String course;
     @Column(name = "sfee")
     private Double fee;
+
+    public Student(String name, String course, Double fee) {
+        this.name = name;
+        this.course = course;
+        this.fee = fee;
+    }
 }
