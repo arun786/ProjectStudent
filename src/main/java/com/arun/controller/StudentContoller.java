@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,6 +31,12 @@ public class StudentContoller {
     @GetMapping("/student/v1/student/{id}")
     public ResponseEntity<Optional<Student>> getAStudent(@PathVariable(value = "id") Long id) {
         Optional<Student> student = studentService.getAStudent(id);
+        return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+
+    @GetMapping("/student/v1/students")
+    public ResponseEntity<List<Student>> getAllStudent() {
+        List<Student> student = studentService.getAllStudent();
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 }

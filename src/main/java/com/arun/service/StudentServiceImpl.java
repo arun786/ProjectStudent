@@ -6,6 +6,7 @@ import com.arun.model.RequestStudent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -25,5 +26,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<Student> getAStudent(Long id) {
         return studentDao.getAStudent(id);
+    }
+
+    @Override
+    public List<Student> getAllStudent() {
+        return studentDao.getAllStudent();
     }
 }

@@ -3,6 +3,7 @@ package com.arun.service;
 import com.arun.entities.Student;
 import com.arun.model.RequestStudent;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,4 +12,5 @@ import java.util.Optional;
 public interface StudentService {
     Student createAStudent(RequestStudent student);
     Optional<Student> getAStudent(Long id);
+    List<Student> getAllStudent();
 }

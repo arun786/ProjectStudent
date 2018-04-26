@@ -3,6 +3,7 @@ package com.arun.dao;
 import com.arun.entities.Student;
 import com.arun.model.RequestStudent;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,4 +13,5 @@ public interface StudentDao {
 
     Student createAStudent(RequestStudent student);
     Optional<Student> getAStudent(Long id);
+    List<Student> getAllStudent();
 }
