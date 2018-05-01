@@ -40,9 +40,14 @@ public class StudentContoller {
     }
 
     @PutMapping("/student/v1/student")
-    public ResponseEntity<Student> upDateAStudent(@RequestParam(value="id") Long id,
-                                                  @RequestParam(value="fee") Double fee){
+    public ResponseEntity<Student> upDateAStudent(@RequestParam(value = "id") Long id,
+                                                  @RequestParam(value = "fee") Double fee) {
         Student student = studentService.updateAStudent(id, fee);
         return new ResponseEntity<Student>(student, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/student/v1/student")
+    public void deleteAStudent(@RequestParam(value = "id") Long id) {
+        studentService.deleteAStudent(id);
     }
 }

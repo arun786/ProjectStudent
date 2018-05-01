@@ -46,4 +46,11 @@ public class StudentDaoImpl implements StudentDao {
         }
         return student;
     }
+
+    @Override
+    public void deleteAStudent(Long id) {
+        Optional<Student> byId = studentRepository.findById(id);
+        if (byId.isPresent())
+            studentRepository.deleteById(byId.get().getId());
+    }
 }

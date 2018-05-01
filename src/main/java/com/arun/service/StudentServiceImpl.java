@@ -34,6 +34,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student updateAStudent(Long id, double fee) {
-        return studentDao.updateAStudent(id,fee);
+        return studentDao.updateAStudent(id, fee);
+    }
+
+    @Override
+    public void deleteAStudent(Long id) {
+        studentDao.deleteAStudent(id);
     }
 }

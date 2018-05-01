@@ -18,4 +18,6 @@ public interface StudentDao {
     List<Student> getAllStudent();
 
     Student updateAStudent(Long id, double fee);
+
+    void deleteAStudent(Long id);
 }
