@@ -12,6 +12,10 @@ import java.util.Optional;
 public interface StudentDao {
 
     Student createAStudent(RequestStudent student);
+
     Optional<Student> getAStudent(Long id);
+
     List<Student> getAllStudent();
+
+    Student updateAStudent(Long id, double fee);
 }

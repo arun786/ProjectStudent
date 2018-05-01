@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Adwiti on 4/25/2018.
@@ -24,12 +23,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> getAStudent(Long id) {
-        return studentDao.getAStudent(id);
+    public Student getAStudent(Long id) {
+        return studentDao.getAStudent(id).get();
     }
 
     @Override
     public List<Student> getAllStudent() {
         return studentDao.getAllStudent();
+    }
+
+    @Override
+    public Student updateAStudent(Long id, double fee) {
+        return studentDao.updateAStudent(id,fee);
     }
 }

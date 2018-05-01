@@ -1,6 +1,7 @@
 package com.arun.dao;
 
 import com.arun.entities.Student;
+import com.arun.exception.IdNotFoundException;
 import com.arun.model.RequestStudent;
 import com.arun.repos.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,16 @@ public class StudentDaoImpl implements StudentDao {
         return (List<Student>) studentRepository.findAll();
     }
 
-
+    @Override
+    public Student updateAStudent(Long id, double fee) {
+        Optional<Student> byId = studentRepository.findById(id);
+        Student student = null;
+        if (byId.isPresent()) {
+            byId.get().setFee(fee);
+            student = studentRepository.save(byId.get());
+        } else {
+            throw new IdNotFoundException("Student Id " + id + " not present");
+        }
+        return student;
+    }
 }

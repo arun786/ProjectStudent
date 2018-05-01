@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Adwiti on 4/25/2018.
@@ -29,8 +28,8 @@ public class StudentContoller {
     }
 
     @GetMapping("/student/v1/student/{id}")
-    public ResponseEntity<Optional<Student>> getAStudent(@PathVariable(value = "id") Long id) {
-        Optional<Student> student = studentService.getAStudent(id);
+    public ResponseEntity<Student> getAStudent(@PathVariable(value = "id") Long id) {
+        Student student = studentService.getAStudent(id);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
@@ -38,5 +37,12 @@ public class StudentContoller {
     public ResponseEntity<List<Student>> getAllStudent() {
         List<Student> student = studentService.getAllStudent();
         return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+
+    @PutMapping("/student/v1/student")
+    public ResponseEntity<Student> upDateAStudent(@RequestParam(value="id") Long id,
+                                                  @RequestParam(value="fee") Double fee){
+        Student student = studentService.updateAStudent(id, fee);
+        return new ResponseEntity<Student>(student, HttpStatus.OK);
     }
 }
